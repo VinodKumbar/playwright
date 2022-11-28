@@ -1,3 +1,4 @@
+const Person = require('./7classes')
 console.log("In String we have collections of Characters")
 let day = "tuesday"
 console.log("The length of String is : " + day.length)
@@ -18,8 +19,6 @@ console.log("String to Numbers : "+ diff)
 date.toString()  // Numbers to String
 console.log("Numbers to String : "+ date)
 
-
-
 console.log("How to concatenate 2 string ")
 let newQuote = day + " is Funday day"
 console.log(newQuote)
@@ -36,3 +35,10 @@ while(value!==-1){
     value = newQuote.indexOf("day", value+1)
 }
 console.log("The Number of day occured in complete stting is  :"+count)
+
+
+
+
+// access the class variable and methods by creating object of class
+let person3 = new Person("Pallavi", "Vinod")
+console.log(person3.fullName())
