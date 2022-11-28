@@ -21,8 +21,24 @@ test('Browser Context Playwright Test', async ({browser})=> {
  
 });
 
-test('Page Playwright Test', async ({page})=> {
+test.only('Page Playwright Test', async ({page})=> {
+    const userName = page.locator("#username");
+    const passWord = page.locator("[type='password']");
+    const errorText = page.locator("[style*='block']");
+    const signInBtn = page.locator("#signInBtn");
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log("if you want run only one test then use test.only "+ await page.title())
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
+    await userName.type("rahulshetty");
+    await passWord.type("learning");
+    await signInBtn.click();
+    console.log(await errorText.textContent());
+    await expect(errorText).toContainText("Incorrect");
+
+    await userName.fill("");
+    await userName.fill("rahulshettyacademy")
+    await passWord.fill("learning");
+    await signInBtn.click();
+    console.log(await page.locator(".card-body a").first().textContent());  // first element
+    console.log(await page.locator(".card-body a").nth(1).textContent());   // second element
   });
