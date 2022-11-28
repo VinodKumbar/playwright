@@ -80,6 +80,49 @@ for(let i=0; i<scores.length;i++){
 console.log(evenScores)
 
 
-console.log("rint only even numbers from array->filter method") 
-let newFilterScores = scores.filter(scores => scores%2 ==0)
-console.log(newFilterScores)
+console.log("print only even numbers from array->filter method") 
+let newFilterEvenScores = scores.filter(scores => scores%2 ==0)
+console.log(newFilterEvenScores)
+
+
+console.log("Mapping -> print only even numbers from array and multi[ly each value by 3 -> map method '\n' and sum-up the mapped array") 
+let mappedArray = newFilterEvenScores.map(score => score*3)
+console.log(mappedArray)
+let totalValue = mappedArray.reduce((sum2, value) => sum2+value, 0)
+console.log(totalValue)
+ 
+
+console.log("how to cahin the reduce, filter and map methods and get the same results")
+var scores1 = [12,13,14,16]
+let sumValue = scores1.filter(score => score %2 ==0).map(score => score *3).reduce((sum2, value) => sum2+value, 0)
+console.log(sumValue)
+
+
+
+console.log("how to sort the Arrays which have string elemets/ values")
+let fruits= ["banana", "mango", "pomegrante", "apple"]
+fruits.sort()
+console.log(fruits)
+
+console.log("how to Revers sort the Arrays which have string elemets/ values")
+fruits.reverse()
+console.log(fruits)
+
+
+console.log("how to sort the Arrays which have numbers elemets/ values")
+let numbers=[12,003,19,16,14]
+console.log(numbers.sort()) // sort() wont work with Numbers, so we need apply custo logic
+console.log(" 1st approach")
+numbers.sort(function(a,b){
+    return a-b
+})
+console.log(numbers)
+
+console.log ("2nd approach - bubble sort in asencindg order")
+numbers.sort((a,b)=> a-b)
+console.log(numbers)
+
+
+console.log ("2nd approach - bubble sort in descending / reverse  order")
+numbers.sort((a,b)=> b-a)
+console.log(numbers)
