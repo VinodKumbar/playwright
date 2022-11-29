@@ -26,6 +26,7 @@ test.only('Page Playwright Test', async ({page})=> {
     const passWord = page.locator("[type='password']");
     const errorText = page.locator("[style*='block']");
     const signInBtn = page.locator("#signInBtn");
+    const cardTitles = page.locator(".card-body a");
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log("if you want run only one test then use test.only "+ await page.title())
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
@@ -37,8 +38,14 @@ test.only('Page Playwright Test', async ({page})=> {
 
     await userName.fill("");
     await userName.fill("rahulshettyacademy")
-    await passWord.fill("learning");
-    await signInBtn.click();
-    console.log(await page.locator(".card-body a").first().textContent());  // first element
-    console.log(await page.locator(".card-body a").nth(1).textContent());   // second element
+    await Promise.all ([
+      page.waitForNavigation(),
+      signInBtn.click(),
+    ]);
+    
+    // console.log(await cardTitles.first().textContent());  // first element
+    // console.log(await cardTitles.nth(1).textContent());   // second element
+
+    const allTitles = await cardTitles.allTextContents(); // all elements - allTextContents method is not part of Auto Wait
+    console.log(allTitles);
   });
