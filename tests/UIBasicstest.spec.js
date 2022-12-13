@@ -63,6 +63,7 @@ test("UI Controls", async ({page})=>{
     expect(page.locator(".radiotextsty").nth(1)).toBeChecked();
     console.log(await page.locator(".radiotextsty").nth(1).isChecked());
     // await page.pause();            // it will open Playwright Inspector
+    // to open Playwright Inspector , we need to run the test command in deub mode i.e npx playwright test tests/UIBasicstest.spec.js --debug
     await page.locator("#terms").click();
     await expect(page.locator("#terms")).toBeChecked();
     await page.locator("#terms").uncheck();
@@ -70,7 +71,7 @@ test("UI Controls", async ({page})=>{
     await expect(documentLink).toHaveAttribute("class", "blinkingText");
 });
 
-test.only("Child windows handling", async ({browser})=>{
+test("Child windows handling", async ({browser})=>{
   const context = await browser.newContext(); // it will open fresh new instance - browser in incognito mode
   const page = await context.newPage();
   const userName = page.locator("#username");

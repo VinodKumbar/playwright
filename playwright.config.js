@@ -10,7 +10,10 @@ const config = {
   reporter: 'html',
   use: {
     browserName : 'chromium',
-    headless : false
+    headless : false,
+    screenshot : 'on',
+    // trace: 'on'  -> it will genrate trace files for all steps
+    trace : 'retain-on-failure'   // generate trace files only for failed test steps
    },  
 };
 
